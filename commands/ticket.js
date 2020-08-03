@@ -9,11 +9,11 @@ module.exports = {
             permissionOverwrites: [
                 {
                     id: message.guild.id,
-                    deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGES_HISTORY'],
+                    deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
                 },
                 {
                     id: message.author.id,
-                    allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGES_HISTORY'],
+                    allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
                 },
             ],
         })

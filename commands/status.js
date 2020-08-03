@@ -36,7 +36,7 @@ module.exports = {
             .setTitle("**คำสั่ง Status**")
             .setColor("BLUE")
             .addField(`[อาร์กิวเมนต์](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)`, "open / close")
-            .setDescription(`${message.author.avatarURL()} สร้างบอทโดย Ayumi`)
+            .setFooter(`${message.author.avatar()} สร้างบอทโดย Ayumi`)
             message.channel.send(elseembed)
         }
     }

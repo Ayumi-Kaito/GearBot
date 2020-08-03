@@ -35,14 +35,14 @@ client.on('message', message => {
         if (!command) return;
 
     if (command.guildOnly && message.channel.type !== 'text') {
-        return message.reply('I can\'t execute that command inside DMs!');
+        return message.reply('นี่มันไม่ใช่ที่ที่ควรสั่งคำสั่งนะ, ไปสั่งในเซิร์ฟเวอร์!');
     }
 
     if (command.args && !args.length) {
-        let reply = `You didn't provide any arguments, ${message.author}!`;
+        let reply = `คุณไม่ได้ระบุอาร์กิวเมนต์, ${message.author}!`;
 
         if (command.usage) {
-            reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+            reply += `\nการใช้ที่ถูกต้องคือ: \`${prefix}${command.name} ${command.usage}\``;
         }
 
         return message.channel.send(reply);

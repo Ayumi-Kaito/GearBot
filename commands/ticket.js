@@ -4,7 +4,7 @@ const guild = new Discord.Guild()
 module.exports = {
     name: 'buy', 
     execute(message) {
-        message.guild.channels.create(`ticket`, {
+        message.guild.channels.create(`ticket-${message.author.username}`, {
             type: 'text',
             permissionOverwrites: [
                 {

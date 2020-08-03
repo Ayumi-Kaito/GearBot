@@ -32,7 +32,7 @@ module.exports = {
             let elseembed = new MessageEmbed()
             .setTitle("**คำสั่ง Status**")
             .setColor("BLUE")
-            .addField(`[อาร์กิวเมนต์](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)`, "open / close")
+            .addField(`อาร์กิวเมนต์`, "open / close")
             message.channel.send(elseembed)
         }
     }

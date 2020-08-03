@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const Discord = require('discord.js')
-const client = new Discord.Client({disableEveryone: False});
+
 module.exports = {
     name: 'status',
     aliases: ['st'],

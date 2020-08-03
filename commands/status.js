@@ -8,7 +8,6 @@ module.exports = {
         if (!message.member.hasPermission("ADMINISTRATOR")) {
             message.channel.send("คุณไม่สามารถใช้คำสั่งนี้ได้")
         } else if (message.member.hasPermission("ADMINISTRATOR")) {
-    const botowner = "508473794994896896"
         if(args[0] === "open") {
     let openembed = new MessageEmbed()
     .setTitle("✅・𝐒𝐭𝐚𝐭𝐮𝐬")
@@ -18,7 +17,6 @@ module.exports = {
     .addField("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", `[SxilieaCommission](https://discord.gg/Zsvw3td)💎`)
     .addField("▶ขณะนี้ <@694857558095298611> ไม่อยู่โปรดรอจนร้านจะเปิดหรือออน✅", "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     .addField("`ผู้ขายในครั้งนี้`", "<@694857558095298611>")
-    .setFooter(`${message.author.avatar()} สร้างบอทโดย Ayumi`)
     message.channel.send("||@everyone||", openembed)
         } else if(args[0] === "close") {
             let closeembed = new MessageEmbed()
@@ -29,14 +27,12 @@ module.exports = {
             .addField("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", `[SxilieaCommission](https://discord.gg/Zsvw3td)💎`)
             .addField("▶ขณะนี้ <@694857558095298611> ไม่อยู่โปรดรอจนร้านจะเปิดหรือออน✅", "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
             .addField("`ผู้ขายในครั้งนี้`", "<@694857558095298611>")
-            .setFooter(`${message.author.avatar()} สร้างบอทโดย Ayumi`)
             message.channel.send("||@everyone||", closeembed)
         } else {
             let elseembed = new MessageEmbed()
             .setTitle("**คำสั่ง Status**")
             .setColor("BLUE")
             .addField(`[อาร์กิวเมนต์](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)`, "open / close")
-            .setFooter(`${message.author.avatar()} สร้างบอทโดย Ayumi`)
             message.channel.send(elseembed)
         }
     }

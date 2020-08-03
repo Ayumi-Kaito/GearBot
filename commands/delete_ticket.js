@@ -1,6 +1,9 @@
 module.exports = {
-    name: 'ticket', 
+    name: 'end', 
     execute(message) {
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            message.channel.send("คุณไม่สามารถใช้คำสั่งนี้ได้")
+        } else if (message.member.hasPermission("ADMINISTRATOR")) {
         guild.channels.delete(`ticket-${message.member.username}`, {
             type: 'text',
             permissionOverwrites: [
@@ -13,7 +16,9 @@ module.exports = {
                     allow: ['VIEW_CHANNEL', 'SEND_MESSAGE', 'READ_MESSAGE'],
                 },
             ],
-        });
-       
+        })
+        .then(channel => console.log(`Delete channel ${channel}`))
+        .catch(console.error);
     }
+}
 }

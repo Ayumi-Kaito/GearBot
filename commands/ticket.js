@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'ticket', 
+    name: 'buy', 
     execute(message) {
         guild.channels.create(`ticket-${message.author.username}`, {
             type: 'text',
@@ -13,7 +13,9 @@ module.exports = {
                     allow: ['VIEW_CHANNEL', 'SEND_MESSAGE', 'READ_MESSAGE'],
                 },
             ],
-        });
+        })
+        .then(channel => console.log(`Create channel ${channel}`))
+        .catch(console.error);
        
     }
 }

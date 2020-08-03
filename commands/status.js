@@ -18,7 +18,7 @@ module.exports = {
     .addField("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", `[SxilieaCommission](https://discord.gg/Zsvw3td)💎`)
     .addField("▶ขณะนี้ <@694857558095298611> ไม่อยู่โปรดรอจนร้านจะเปิดหรือออน✅", "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     .addField("`ผู้ขายในครั้งนี้`", "<@694857558095298611>")
-    .setDescription(`${message.author.avatarURL()} สร้างบอทโดย Ayumi`)
+    .setFooter(`${message.author.avatar()} สร้างบอทโดย Ayumi`)
     message.channel.send("||@everyone||", openembed)
         } else if(args[0] === "close") {
             let closeembed = new MessageEmbed()
@@ -29,7 +29,7 @@ module.exports = {
             .addField("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", `[SxilieaCommission](https://discord.gg/Zsvw3td)💎`)
             .addField("▶ขณะนี้ <@694857558095298611> ไม่อยู่โปรดรอจนร้านจะเปิดหรือออน✅", "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
             .addField("`ผู้ขายในครั้งนี้`", "<@694857558095298611>")
-            .setDescription(`${message.author.avatarURL()} สร้างบอทโดย Ayumi`)
+            .setFooter(`${message.author.avatar()} สร้างบอทโดย Ayumi`)
             message.channel.send("||@everyone||", closeembed)
         } else {
             let elseembed = new MessageEmbed()

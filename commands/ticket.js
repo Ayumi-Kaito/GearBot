@@ -1,3 +1,6 @@
+const Discord = require('discord.js')
+const guild = new Discord.Guild()
+
 module.exports = {
     name: 'buy', 
     execute(message) {

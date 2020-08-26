@@ -4,8 +4,7 @@ const { prefix } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const rpc = [
-    `Chanon x Sxiliea | ${client.guilds.cache.size} servers`,
-    `Javascript is the best | ${client.guilds.cache.size} servers`,
+    `เขียนโค้ดเองไม่ง้อใคร | ${client.guilds.cache.size} servers`,
     `g.help เพื่อดูคำสั่ง | ${client.guilds.cache.size} servers`,
     ]; 
 const huh = ["ห่ะ", "huh", "หะ", "ห้ะ",""]

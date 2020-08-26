@@ -4,10 +4,11 @@ const { prefix } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const rpc = [
-    `SxilieaCommission โคตรรดี | ${client.guilds.cache.size} servers`,
-    `สร้างบอตโดย อายูปี๊ | ${client.guilds.cache.size} servers`,
-    `g.help เพื่อดูคำสั้ง | ${client.guilds.cache.size} servers`,
+    `Chanon x Sxiliea | ${client.guilds.cache.size} servers`,
+    `Javascript is the best | ${client.guilds.cache.size} servers`,
+    `g.help เพื่อดูคำสั่ง | ${client.guilds.cache.size} servers`,
     ]; 
+const huh = ["ห่ะ", "huh", "หะ", "ห้ะ",""]
     
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -78,4 +79,4 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.TOKEN);
+client.login("NzM5Nzk0NTYzMzI5NDI1NDk4.XyfpYA.kNxy_tEPJflJGDzXrrZq2NqXSZo");

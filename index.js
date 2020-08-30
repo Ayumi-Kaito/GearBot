@@ -1,81 +1,51 @@
-const fs = require('fs');
-const Discord = require('discord.js');
-const { prefix } = require('./config.json');
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-const rpc = [
-    `เขียนโค้ดเองไม่ง้อใคร | ${client.guilds.cache.size} servers`,
-    `g.help เพื่อดูคำสั่ง | ${client.guilds.cache.size} servers`,
-    ]; 
-const huh = ["ห่ะ", "huh", "หะ", "ห้ะ",""]
-    
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+require('dotenv').config();
+const { readdirSync } = require('fs');
+const { join } = require('path');
+const MusicClient = require('./struct/Client');
+const { Collection } = require('discord.js');
+const client = new MusicClient({ token: process.env.TOKEN, prefix: process.env.DISCORD_PREFIX });
 
+const commandFiles = readdirSync(join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
+	const command = require(join(__dirname, 'commands', `${file}`));
+	client.commands.set(command.name, command);
 }
-const cooldowns = new Discord.Collection();
-client.once('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    setInterval(() => {
-        const rpcrandom = Math.floor(Math.random() * (rpc.length - 1) + 1);
-        client.user.setActivity(rpc[rpcrandom]);
-    }, 10000);
-    });
+
+client.once('ready', () => console.log('READY!'));
 client.on('message', message => {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.startsWith(client.config.prefix) || message.author.bot) return;
+	const args = message.content.slice(client.config.prefix.length).split(/ +/);
+	const commandName = args.shift().toLowerCase();
+	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+	if (!command) return;
+	if (command.guildOnly && message.channel.type !== 'text') return message.reply('I can\'t execute that command inside DMs!');
+	if (command.args && !args.length) {
+		let reply = `ไหนอาร์กิวเมนต์, ${message.author}!`;
+		if (command.usage) reply += `\nการใช้ที่ดีคือ: \`${client.config.prefix}${command.name} ${command.usage}\``;
+		return message.channel.send(reply);
+	}
+	if (!client.cooldowns.has(command.name)) {
+		client.cooldowns.set(command.name, new Collection());
+	}
+	const now = Date.now();
+	const timestamps = client.cooldowns.get(command.name);
+	const cooldownAmount = (command.cooldown || 3) * 1000;
+	if (timestamps.has(message.author.id)) {
+		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+		if (now < expirationTime) {
+			const timeLeft = (expirationTime - now) / 1000;
+			return message.reply(`รออีก ${timeLeft.toFixed(1)} เพื่อใช้คำสั่ง \`${command.name}\``);
+		}
+	}
+	timestamps.set(message.author.id, now);
+	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const commandName = args.shift().toLowerCase();
-
-        const command = client.commands.get(commandName)
-            || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-    
-        if (!command) return;
-
-    if (command.guildOnly && message.channel.type !== 'text') {
-        return message.reply('นี่มันไม่ใช่ที่ที่ควรสั่งคำสั่งนะ, ไปสั่งในเซิร์ฟเวอร์!');
-    }
-
-    if (command.args && !args.length) {
-        let reply = `คุณไม่ได้ระบุอาร์กิวเมนต์, ${message.author}!`;
-
-        if (command.usage) {
-            reply += `\nการใช้ที่ถูกต้องคือ: \`${prefix}${command.name} ${command.usage}\``;
-        }
-
-        return message.channel.send(reply);
-
-    }
-
-
-    if (!cooldowns.has(command.name)) {
-        cooldowns.set(command.name, new Discord.Collection());
-    }
-
-    const now = Date.now();
-    const timestamps = cooldowns.get(command.name);
-    const cooldownAmount = (command.cooldown || 3) * 1000;
-
-    if (timestamps.has(message.author.id)) {
-        const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-        if (now < expirationTime) {
-            const timeLeft = (expirationTime - now) / 1000;
-            return message.reply(`หยุดก่อน! รออีก ${timeLeft.toFixed(1)} วินาทีก่อนที่จะใช้ \`${command.name}\` command.`);
-        }
-    }
-
-    timestamps.set(message.author.id, now);
-    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-
-    try {
-        command.execute(message, args)
-    } catch (error) {
-        console.error(error);
-        message.reply('รันคำสั่งผิดพลาด');
-    }
+	try {
+		command.execute(message, args);
+	} catch (error) {
+		console.error(error);
+		message.reply('เกิดการ เอ๋อเหรอขึ้น');
+	}
 });
 
-client.login(process.env.TOKEN);
+client.login(client.config.token);

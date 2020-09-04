@@ -1,3 +1,5 @@
+// original script by iCrawl https://github.com/iCrawl/discord-music-bot/blob/master/src/commands/
+
 module.exports = {
 	name: 'skip',
 	description: 'Skip command.',

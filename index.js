@@ -27,6 +27,10 @@ client.on('message', message => {
 	if (!client.cooldowns.has(command.name)) {
 		client.cooldowns.set(command.name, new Collection());
 	}
+	client.user.setActivity("กับผี", {
+		type: "STREAMING",
+		url: "https://www.twitch.tv/loyaltyee"
+	  });
 	const now = Date.now();
 	const timestamps = client.cooldowns.get(command.name);
 	const cooldownAmount = (command.cooldown || 3) * 1000;

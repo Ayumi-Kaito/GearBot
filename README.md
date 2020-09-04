@@ -15,7 +15,7 @@
 <p align = 'center'>Ehh, Yes Gear will do it!</p>
 
 <div align = 'center'>
-	<h2>oderations commands list</h2>
+	<h2>Moderations commands list</h2>
 	</div>
 <ul>
 	<li>Kick</li>

@@ -8,11 +8,11 @@
 
 <img src="https://see.fontimg.com/api/renderfont4/DOJ71/eyJyIjoiZnMiLCJoIjo1OSwidyI6MTI1MCwiZnMiOjQ3LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TU9ERVJFQVRJT05TIE5FVyBDT01JTkc/juniorprince-regular.png">
 
-This guy use swear words, this guy racist, this guy...
+<p align = 'center'>This guy use swear words, this guy racist, this guy...
 
 I want to kick all these guys!!!
 
-Ehh, Yes Gear will do it!
+Ehh, Yes Gear will do it!</p>
 
 # Moderations commands list
 <ul>

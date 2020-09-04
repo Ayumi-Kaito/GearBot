@@ -1,4 +1,4 @@
-# Gearbot
+# Chanonbot
 <h2>Simple discord bot that very powerful!</h2>
 <ul>
 	<li>🔨<a href='https://discord.js.org/#/docs/main/stable/examples/moderation'>Moderation</a></li>
@@ -12,7 +12,7 @@
 
 <p align = 'center'>I want to kick all these guys!!!</p>
 
-<p align = 'center'>Ehh, Yes Gear will do it!</p>
+<p align = 'center'>Ehh, Yes Chanon will do it!</p>
 
 <div align = 'center'>
 	<h2>Moderations commands list</h2>

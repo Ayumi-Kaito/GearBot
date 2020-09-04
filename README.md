@@ -14,9 +14,10 @@
 
 <p align = 'center'>Ehh, Yes Gear will do it!</p>
 
+<div align = 'center'>
 # Moderations commands list
 <ul>
 	<li>Kick</li>
 	<li>Ban</li>
 </ul>
-
+</div>

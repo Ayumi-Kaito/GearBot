@@ -9,6 +9,7 @@ module.exports = {
 	usage: '[เพลงเนม]',
 	args: true,
 	cooldown: 5,
+	aliases: ["p"],
 	async execute(message, args) {
 		const { channel } = message.member.voice;
 		if (!channel) return message.channel.send('Join voice room first!');

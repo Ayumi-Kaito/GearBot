@@ -4,6 +4,7 @@ module.exports = {
 	name: 'resume',
 	description: 'Resume command.',
 	cooldown: 5,
+	aliases: ["re"],
 	execute(message) {
 		const serverQueue = message.client.queue.get(message.guild.id);
 		if (serverQueue && !serverQueue.playing) {

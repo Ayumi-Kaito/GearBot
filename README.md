@@ -1,5 +1,6 @@
 # Chanonbot
 <h2>Simple discord bot that very powerful!</h2>
+<a href="https://www.codacy.com/manual/Ayumi-Kaito/GearBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ayumi-Kaito/GearBot&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/3c53d6f900694a24a36adc6136c53472"></a>
 <ul>
 	<li>🔨<a href='https://discord.js.org/#/docs/main/stable/examples/moderation'>Moderation</a></li>
 	<li>🎈<a href='https://github.com/Ayumi-Kaito/GearBot'>Fun</a></li>

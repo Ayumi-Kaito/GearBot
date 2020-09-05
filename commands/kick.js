@@ -1,10 +1,8 @@
 module.exports = {
     name: "kick",
 execute(message, args) {
-if (!message.guild) return;
-  if (message.content.startsWith('!kick')) {
       if(!message.member.hasPermission("KICK_MEMBERS")) {
-          message.channel.send("ยศต่ำไป")
+          message.channel.send("Too low permission!")
       }
     const user = message.mentions.users.first();
     if (user) {
@@ -13,18 +11,17 @@ if (!message.guild) return;
         member
           .kick('Optional reason that will display in the audit logs')
           .then(() => {
-            message.reply(`เตะ ${user.tag} ละ`);
+            message.reply(`I kick ${user.tag}`);
           })
           .catch(err => {
-            message.reply('กูเตะไม่ได้!!!!!!!!');
+            message.reply('I can\'t kick!');
             console.error(err);
           });
       } else {
-        message.reply("ไม่รับเตะผี");
+        message.reply("I don't want to kick ghosts or dead people");
       }
     } else {
-      message.reply("ไม่รับเตะอากาศ");
+      message.reply("I don't want to kick \"\"");
     }
   }
-}
 }

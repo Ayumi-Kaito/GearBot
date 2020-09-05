@@ -1,10 +1,8 @@
 module.exports = {
     name: "ban",
 execute(message, args) {
-if (!message.guild) return;
-  if (message.content.startsWith('!kick')) {
       if(!message.member.hasPermission("BAN_MEMBERS")) {
-          message.channel.send("ยศต่ำไป")
+          message.channel.send("You don't have permissions to kick.")
       }
     const user = message.mentions.users.first();
     if (user) {
@@ -15,18 +13,17 @@ if (!message.guild) return;
             reason: 'Umm',
           })
           .then(() => {
-            message.reply(`เตะ ${user.tag} ละ`);
+            message.reply(`I already kick ${user.tag}`);
           })
           .catch(err => {
-            message.reply('กูเตะไม่ได้!!!!!!!!');
+            message.reply('I can\'t kick');
             console.error(err);
           });
       } else {
-        message.reply("ไม่รับเตะผี");
+        message.reply("I don't want to kick ghost or dead people.");
       }
     } else {
-      message.reply("ไม่รับเตะอากาศ");
+      message.reply("I don't want to kick  \"\" ");
     }
   }
-}
 }

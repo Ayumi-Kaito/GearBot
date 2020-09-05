@@ -6,11 +6,11 @@ module.exports = {
 	cooldown: 5,
 	execute(message) {
 		const serverQueue = message.client.queue.get(message.guild.id);
-		if (!serverQueue) return message.channel.send('ก็ไม่ได้เล่นอะไรนิ?');
+		if (!serverQueue) return message.channel.send('Nothing playing');
 		return message.channel.send(`
-__**คิว:**__
+__**QUEUE:**__
 ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
-**กำลังเล่น:** ${serverQueue.songs[0].title}
+**PLAYING:** ${serverQueue.songs[0].title}
 		`);
 	}
 };

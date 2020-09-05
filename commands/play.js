@@ -11,10 +11,10 @@ module.exports = {
 	cooldown: 5,
 	async execute(message, args) {
 		const { channel } = message.member.voice;
-		if (!channel) return message.channel.send('เข้าห้องด้วยดิ');
+		if (!channel) return message.channel.send('Join voice room first!');
 		const permissions = channel.permissionsFor(message.client.user);
-		if (!permissions.has('CONNECT')) return message.channel.send('ยศเกียร์ไม่พอที่จะเข้าห้อง');
-		if (!permissions.has('SPEAK')) return message.channel.send('ยศเกียร์ไม่พอที่จะพูด');
+		if (!permissions.has('CONNECT')) return message.channel.send('I don\'t have perms');
+		if (!permissions.has('SPEAK')) return message.channel.send('I don\'t have perms');
 
 		const serverQueue = message.client.queue.get(message.guild.id);
 		const songInfo = await ytdl.getInfo(args[0].replace(/<(.+)>/g, '$1'));
@@ -27,7 +27,7 @@ module.exports = {
 		if (serverQueue) {
 			serverQueue.songs.push(song);
 			console.log(serverQueue.songs);
-			return message.channel.send(`✅ **${song.title}** ถูกยัดลงคิว`);
+			return message.channel.send(`✅ Queued **${song.title}**`);
 		}
 
 		const queueConstruct = {
@@ -56,7 +56,7 @@ module.exports = {
 				})
 				.on('error', error => console.error(error));
 			dispatcher.setVolumeLogarithmic(queue.volume / 5);
-			queue.textChannel.send(`🎶 กำลังเล่น: **${song.title}**`);
+			queue.textChannel.send(`🎶 Playing: **${song.title}**`);
 		};
 
 		try {
@@ -67,7 +67,7 @@ module.exports = {
 			console.error(`I could not join the voice channel: ${error}`);
 			message.client.queue.delete(message.guild.id);
 			await channel.leave();
-			return message.channel.send(`เอ๋อเหร่อร์: ${error}`);
+			return message.channel.send(`ERR!: ${error}`);
 		}
 	}
 };

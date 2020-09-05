@@ -7,13 +7,13 @@ module.exports = {
         const amount = parseInt(args[0]);
 
         if (isNaN(amount)) {
-            return message.reply('โปรดระบุตัวเลขให้ถูกต้อง');
+            return message.reply('Enter valid number');
         } else if (amount < 2 || amount > 100) {
-            return message.reply('ใส่จำนวนระหว่าง 2 - 100');
+            return message.reply('Enter number among 2 - 100');
         }
         message.channel.bulkDelete(amount, true).catch(err => {
             console.error(err);
-            message.channel.send('มีบางอย่างผิดพลาด!!!');
+            message.channel.send('Oopsie, Something went wrong in progress');
         });
     }
 }

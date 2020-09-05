@@ -9,8 +9,8 @@ module.exports = {
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
-			return message.channel.send('▶ ส้มอย่าหยุด!');
+			return message.channel.send('▶ RESUME!');
 		}
-		return message.channel.send('อากาศอย่าหยุด?');
+		return message.channel.send('Nothing to resume');
 	}
 };

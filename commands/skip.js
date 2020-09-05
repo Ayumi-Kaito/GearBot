@@ -6,9 +6,9 @@ module.exports = {
 	cooldown: 5,
 	execute(message) {
 		const { channel } = message.member.voice;
-		if (!channel) return message.channel.send('มึงเข้าห้องก่อน');
+		if (!channel) return message.channel.send('Join voice channel first');
 		const serverQueue = message.client.queue.get(message.guild.id);
-		if (!serverQueue) return message.channel.send('ให้กูข้ามอากาศมั้ง');
-		serverQueue.connection.dispatcher.end('ข้ามละ');
+		if (!serverQueue) return message.channel.send('Nothing to skip');
+		serverQueue.connection.dispatcher.end(`'Ok, I skip ${serverQueue.songs[0].title}'`);
 	}
 };

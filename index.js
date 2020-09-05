@@ -20,16 +20,15 @@ client.on('message', message => {
 	if (!command) return;
 	if (command.guildOnly && message.channel.type !== 'text') return message.reply('I can\'t execute that command inside DMs!');
 	if (command.args && !args.length) {
-		let reply = `ไหนอาร์กิวเมนต์, ${message.author}!`;
-		if (command.usage) reply += `\nการใช้ที่ดีคือ: \`${client.config.prefix}${command.name} ${command.usage}\``;
+		let reply = `No args, ${message.author}!`;
+		if (command.usage) reply += `\nCorrect usage is: \`${client.config.prefix}${command.name} ${command.usage}\``;
 		return message.channel.send(reply);
 	}
 	if (!client.cooldowns.has(command.name)) {
 		client.cooldowns.set(command.name, new Collection());
 	}
-	client.user.setActivity("กับผี", {
-		type: "STREAMING",
-		url: "https://www.twitch.tv/loyaltyee"
+	client.user.setActivity(`${client.guilds.cache.size} servers | c.help`, {
+		type: "WATCHING",
 	  });
 	const now = Date.now();
 	const timestamps = client.cooldowns.get(command.name);
@@ -38,7 +37,7 @@ client.on('message', message => {
 		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`รออีก ${timeLeft.toFixed(1)} เพื่อใช้คำสั่ง \`${command.name}\``);
+			return message.reply(`wait ${timeLeft.toFixed(1)} before reusing \`${command.name}\``);
 		}
 	}
 	timestamps.set(message.author.id, now);
@@ -48,7 +47,7 @@ client.on('message', message => {
 		command.execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply('เกิดการ เอ๋อเหรอขึ้น');
+		message.reply('ERR!');
 	}
 });
 

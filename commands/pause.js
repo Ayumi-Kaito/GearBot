@@ -9,8 +9,8 @@ module.exports = {
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
-			return message.channel.send('⏸ ส้มหยุด!');
+			return message.channel.send('⏸ STOP!');
 		}
-        return message.channel.send('อากาศจงหยุด?');
+        return message.channel.send('Nothing to pause.');
 	}
 };

@@ -27,6 +27,10 @@ client.on('message', message => {
 	if (!client.cooldowns.has(command.name)) {
 		client.cooldowns.set(command.name, new Collection());
 	}
+		const command = client.commands.get(commandName)
+		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	if (!command) return;
 	client.user.setActivity(`${client.guilds.cache.size} servers | c.help`, {
 		type: "WATCHING",
 	  });

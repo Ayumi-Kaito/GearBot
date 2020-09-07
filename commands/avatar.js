@@ -1,6 +1,6 @@
 module.exports = {
     name: "avatar",
-    aliases: ["av"],
+    aliases: ['av'],
     execute(message, args) {
         let ping = message.mentions.users.first();
         if(!ping) {

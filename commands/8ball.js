@@ -1,6 +1,6 @@
 module.exports = {
     name: "8ball",
-    aliases: ["8b"],
+    aliases: ['8b'],
     args: true,
     execute(message, args) {
 

@@ -1,28 +1,55 @@
-# Chanonbot
+# <div align = 'center'>
+<h1>ChanonBot</h1>
 <h2>Simple discord bot that very powerful!</h2>
 <a href="https://www.codacy.com/manual/Ayumi-Kaito/GearBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ayumi-Kaito/GearBot&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/3c53d6f900694a24a36adc6136c53472"></a>
-<a title="Latest push build on default branch: failed" name="status-images" class="pointer open-popup">
+<a title="Latest push build on default branch: failed" class="pointer open-popup">
     <img src="https://travis-ci.org/Ayumi-Kaito/ChanonBot.svg?branch=master&amp;status=failed" alt="build:failed">
   </a>
+  <br/>
+  <br/>
+    <br/>
+<h2>Categories</h2>
 <ul>
-	<li>🔨<a href='https://discord.js.org/#/docs/main/stable/examples/moderation'>Moderation</a></li>
-	<li>🎈<a href='https://github.com/Ayumi-Kaito/GearBot'>Fun</a></li>
-	<li>🎶<a href='https://github.com/iCrawl/discord-music-bot'>Music</a></li>
-</ul>
+  <li>🔨Moderation</li>
+  <li>🎈FuN</li>
+  <li>🎶Music</li>
+  <li>💉Others</li>
+  </ul>
+  <br/>
+    <br/>
+      <br/>
 
-<img src="https://see.fontimg.com/api/renderfont4/DOJ71/eyJyIjoiZnMiLCJoIjo1OSwidyI6MTI1MCwiZnMiOjQ3LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TU9ERVJFQVRJT05TIE5FVyBDT01JTkc/juniorprince-regular.png">
-
-<p align = 'center'>This guy use swear words, this guy racist, this guy...</p>
-
-<p align = 'center'>I want to kick all these guys!!!</p>
-
-<p align = 'center'>Ehh, Yes Chanon will do it!</p>
-
-<div align = 'center'>
-	<h2>Moderations commands list</h2>
-	</div>
+<h2>Moderations Commands</h2>
 <ul>
-	<li>Kick</li>
-	<li>Ban</li>
-</ul>
-
+  <li>kick - Kick members  (args required) [KICK MEMBERS PERMISSION REQUIRED]</li>
+  <li>ban - Ban members (args required)[KICK MEMBERS PERMISSION REQUIRED]</li>
+  <li>prune [clear / delete] - Delete message 2-100 msg. (args required)[MANAGE MESSAGE PERMISSIONS REQUIRED]</li>
+  </ul>
+    <br/>
+<h2>Fun Commands</h2>
+  <ul>
+  <li>ilove [il] - Ping a user you love (args required) </li>
+  <li>handsome [hs] - How handsome is you? (args)</li>
+  <li>8ball [8b] - Ask 8ball (args required)</li>
+  </ul>
+    <br/>
+<h2>Music Commands</h2>
+<ul>
+  <li>play [p] - Play a music (from youtube links) (args required)</li>
+  <li>queue [q] - Display song queue</li>
+  <li>pause [pa] - Pause a song</li>
+  <li>resume [re] - Resume a song</li>
+  <li>stop - Stop playing music</li>
+  <li>skip - Skip a song</li>
+  <li>np - Show now playing song</li>
+  </ul>
+    <br/>
+<h2>Others Command</h2>
+<ul>
+  <li>avatar [av] - Show user avatar (args)</li>
+    <li>say - Say what you say (args required) [MANAGE MESSAGE PERMISSIONS REQUIRED]</li>
+  </ul>
+  <br/>
+    <br/>
+  <h3>Bot is online 24/7</h3>
+  </div>

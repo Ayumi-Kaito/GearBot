@@ -15,5 +15,6 @@ module.exports = {
             console.error(err);
             message.channel.send('Oopsie, Something went wrong in progress');
         });
+message.channel.send("✅ Message deleted")
     }
 }

@@ -10,7 +10,7 @@ modules.forEach(file => {
 	fs.readdir(`./src/${file}/`, (err, files) => { 
 	if (err) throw err; 
 	console.log(`bruh`); 
-	​
+	
 	files.forEach(f => {
 	const props = require(`./src/${file}/${f}`);
 	client.commands.set(props.help.name, props); 

@@ -1,7 +1,7 @@
 const db = require('quick.db')
 module.exports = {
-    name = 'bal',
-    aliases = ['checkbal', 'balance'],
+    name: 'bal',
+    aliases: ['checkbal', 'balance'],
     execute(message, args) {
         var member = message.mentions.members.first() || message.author;
 

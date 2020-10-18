@@ -4,24 +4,11 @@ const { Collection } = require('discord.js');
 const fs = require('fs');
 const { readdirSync } = require('fs')
 const client = new MusicClient({ token: process.env.TOKEN, prefix: process.env.DISCORD_PREFIX });
+const config = require('./config.json')
 const { sep } = require("path");
 
-const modules = ['music', 'moderatric', 'economic', 'informatic', 'funatic'];
-modules.forEach(file => {
-	fs.readdir(`./src/${file}/`, (err, files) => { 
-	if (err) throw err; 
-	console.log(`bruh`); 
-	
-	files.forEach(f => {
-	const props = require(`./src/${file}/${f}`);
-	client.commands.set(props.help.name, props); 
-	props.conf.aliases.forEach(alias => { 
-	client.aliases.set(alias, props.name); 
-});
-});
-});
-});
-//https://medium.com/discordbot/create-a-basic-command-handler-for-your-discord-js-bot-4e24e17cb594
+
+client.config = config;
 
 fs.readdir("./events/", (err, files) => {
 	if (err) return console.error(err);

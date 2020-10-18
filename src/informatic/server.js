@@ -1,6 +1,7 @@
 module.exports = {
     name: 'server',
     args: false,
+    category: "",
     execute: async(message) => {
         let verify = ["None", "Low", "Medium", "High", "Highest"];
         let region = {

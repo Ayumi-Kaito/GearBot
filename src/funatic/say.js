@@ -1,6 +1,7 @@
 module.exports = {
     name: 'say',
     args: true,
+    category: "",
     execute: async(message, args) => {
         if(!message.member.hasPermission("MANAGE_MESSAGES")) { 
 message.channel.send("Not Enough Permission")

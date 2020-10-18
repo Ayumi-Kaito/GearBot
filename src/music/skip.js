@@ -4,6 +4,7 @@ module.exports = {
 	name: 'skip',
 	description: 'Skip command.',
 	cooldown: 5,
+	category: "",
 	execute(message) {
 		const { channel } = message.member.voice;
 		if (!channel) return message.channel.send('Join voice channel first');

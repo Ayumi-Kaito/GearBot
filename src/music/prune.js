@@ -2,6 +2,7 @@ module.exports = {
     name: 'clear',
     description: 'Clear unwanted message',
     aliases: ['prune', 'delete'],
+    category: "",
     execute(message, args) {
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply('คุณไม่สามารถใช้ได้')
         const amount = parseInt(args[0]);

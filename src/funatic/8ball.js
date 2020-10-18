@@ -2,6 +2,7 @@ module.exports = {
     name: "8ball",
     aliases: ['8b'],
     args: true,
+    category: "",
     execute(message, args) {
 
         function RANDOM() {

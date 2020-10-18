@@ -7,6 +7,7 @@ module.exports = {
 	name: 'play',
 	description: 'เล่นเพลง',
 	usage: '[เพลงเนม]',
+	category: "",
 	args: true,
 	cooldown: 5,
 	aliases: ['p'],

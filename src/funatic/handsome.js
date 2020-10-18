@@ -4,6 +4,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: 'handsome',
     aliases: ['hs'],
+    category: "",
     execute(message, args) {
         let ping = message.mentions.users.first();
         if(!ping){

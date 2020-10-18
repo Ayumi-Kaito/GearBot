@@ -2,6 +2,7 @@ const db = require('quick.db')
 module.exports = {
     name: 'withdraw',
     aliases: ['with', 'w'],
+    category: "",
     execute(message, args) {
         var bal = db.fetch(`bal_${member.id}_${message.guild.id}`)
         if (bal === null) bal = 0

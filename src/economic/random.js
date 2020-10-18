@@ -1,7 +1,7 @@
 const db = require('quick.db')
 module.exports = {
-    name = 'guess',
-    aliases = ['guessthenumber', 'gtn'],
+    name: 'guess',
+    aliases:  ['guessthenumber', 'gtn'],
     execute(message, args) {
         var bal = db.fetch(`bal_${member.id}_${message.guild.id}`)
         if(bal < 10) {

@@ -8,10 +8,14 @@ module.exports = {
         var bal = db.fetch(`bal_${member.id}_${message.guild.id}`)
         if (bal === null) bal = 0
 
+        var bank = db.fetch(`bank_${member.id}_${message.guild.id}`)
+        if (bank === null) bank = 0
+
         const MessageEmbed = require('discord.js')
         var embed = new MessageEmbed()
         .setTitle(`${member.username} Intelligence`)
         .addField(`💡Intelligence`, `${bal}`, true)
+        .addField(`📁Stored Intelligence`, `${bank}`, true)
         message.channel.send(embed)
     }
 }

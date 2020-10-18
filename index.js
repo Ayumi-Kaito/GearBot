@@ -6,6 +6,7 @@ const { readdirSync } = require('fs')
 const client = new MusicClient({ token: process.env.TOKEN, prefix: process.env.DISCORD_PREFIX });
 const config = require('./config.json')
 const { sep } = require("path");
+const { success, error, warning } = require("log-symbols");
 
 
 client.config = config;

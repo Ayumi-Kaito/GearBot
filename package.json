@@ -25,6 +25,7 @@
     "dotenv": "^8.2.0",
     "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
+    "log-symbols": "^4.0.0",
     "nekos.life": "^2.0.7",
     "opusscript": "0.0.7",
     "parse-ms": "^2.1.0",

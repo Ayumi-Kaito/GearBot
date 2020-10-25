@@ -1,8 +1,4 @@
-module.exports = {
-    name: "avatar",
-    aliases: ['av'],
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
         let ping = message.mentions.users.first();
         if(!ping) {
             message.channel.send(message.author.displayAvatarURL())
@@ -10,4 +6,9 @@ module.exports = {
             message.channel.send(ping.displayAvatarURL())
         }
     }
-}
+
+module.exports.help = {
+    name: "avatar",
+    aliases: ['av'],
+    category: "Info",
+};

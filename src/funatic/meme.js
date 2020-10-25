@@ -1,10 +1,7 @@
 const MessageEmbed = require("discord.js");
 const randomPuppy = require("random-puppy");
 
-module.exports = {
-    name: "meme",
-    category: "",
-    run: async(message) => {
+module.exports.run = async (message) => {
         const subReddits = ["dankmeme", "meme", "me_irl"];
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 
@@ -17,4 +14,8 @@ module.exports = {
 
         message.channel.send(embed);
     }
-}
+
+module.exports.help = {
+    name: "meme",
+    category: "Fun",
+};

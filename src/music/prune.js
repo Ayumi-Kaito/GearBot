@@ -1,9 +1,4 @@
-module.exports = {
-    name: 'clear',
-    description: 'Clear unwanted message',
-    aliases: ['prune', 'delete'],
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply('คุณไม่สามารถใช้ได้')
         const amount = parseInt(args[0]);
 
@@ -18,4 +13,10 @@ module.exports = {
         });
 message.channel.send("✅ Message deleted")
     }
-}
+
+module.exports.help = {
+    name: 'clear',
+    description: 'Clear unwanted message',
+    aliases: ['prune', 'delete'],
+    category: "Music",
+};

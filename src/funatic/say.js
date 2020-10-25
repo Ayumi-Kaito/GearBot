@@ -1,8 +1,4 @@
-module.exports = {
-    name: 'say',
-    args: true,
-    category: "",
-    execute: async(message, args) => {
+module.exports.run = async (message, args) => {
         if(!message.member.hasPermission("MANAGE_MESSAGES")) { 
 message.channel.send("Not Enough Permission")
 } else {
@@ -11,4 +7,10 @@ message.channel.send("Not Enough Permission")
         await message.channel.send(text)
 }
     }
-}
+
+
+module.exports.help = {
+    name: 'say',
+    args: true,
+    category: "Fun",
+};

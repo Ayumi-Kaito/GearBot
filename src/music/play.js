@@ -3,15 +3,7 @@
 const { Util } = require('discord.js');
 const ytdl = require('ytdl-core');
 
-module.exports = {
-	name: 'play',
-	description: 'เล่นเพลง',
-	usage: '[เพลงเนม]',
-	category: "",
-	args: true,
-	cooldown: 5,
-	aliases: ['p'],
-	async execute(message, args) {
+module.exports.run = async (message, args) => {
 		const { channel } = message.member.voice;
 		if (!channel) return message.channel.send('Join voice room first!');
 		const permissions = channel.permissionsFor(message.client.user);
@@ -72,4 +64,14 @@ module.exports = {
 			return message.channel.send(`ERR!: ${error}`);
 		}
 	}
+
+
+module.exports.help = {
+	name: 'play',
+	description: 'Play a song',
+	usage: '[Song name]',
+	category: "Music",
+	args: true,
+	cooldown: 5,
+	aliases: ['p'],
 };

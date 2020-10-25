@@ -1,11 +1,7 @@
 const MessageEmbed = require("discord.js")
 const Discord = require('discord.js')
 
-module.exports = {
-    name: 'handsome',
-    aliases: ['hs'],
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
         let ping = message.mentions.users.first();
         if(!ping){
             let hd = Math.floor(Math.random() * 100) + 1;
@@ -23,4 +19,10 @@ module.exports = {
             message.channel.send(embed)
         }
     }
-}
+
+
+module.exports.help = {
+    name: 'handsome',
+    aliases: ['hs'],
+    category: "Fun",
+};

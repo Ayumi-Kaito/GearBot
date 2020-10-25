@@ -1,9 +1,5 @@
 const db = require('quick.db')
-module.exports = {
-    name: 'stored',
-    aliases: ['str', 'keep'],
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
         var bal = db.fetch(`bal_${member.id}_${message.guild.id}`)
         if (bal === null) bal = 0
 
@@ -21,4 +17,10 @@ module.exports = {
             message.channel.send(`You have stored ${args} in to your brain, Now you have ${bal} Intelligence and ${bank} Stored Intelligence`)
         }
     }
-}
+
+
+module.exports.help = {
+    name: 'stored',
+    aliases: ['str', 'keep'],
+    category: "Economic",
+};

@@ -1,8 +1,4 @@
-module.exports = {
-    name: 'server',
-    args: false,
-    category: "",
-    execute: async(message) => {
+module.exports.run = async (message) => {
         let verify = ["None", "Low", "Medium", "High", "Highest"];
         let region = {
             "brazil": ":flag_br: Brazil",
@@ -38,4 +34,9 @@ module.exports = {
         .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
         message.channel.send(embed)
     }
-}
+
+module.exports.help = {
+    name: 'server',
+    args: false,
+    category: "Info",
+};

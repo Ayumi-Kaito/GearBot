@@ -1,7 +1,4 @@
-module.exports = {
-    name: "ban",
-    category: "",
-execute(message, args) {
+module.exports.run = async (message, args) => {
       if(!message.member.hasPermission("BAN_MEMBERS")) {
           message.channel.send("You don't have permissions to kick.")
       }
@@ -27,4 +24,12 @@ execute(message, args) {
       message.reply("I don't want to kick  \"\" ");
     }
   }
-}
+
+
+module.exports.help = {
+	name: "ban",
+	aliases: ["b"],
+	description: "",
+	usage: "",
+	category: "Moderate",
+};

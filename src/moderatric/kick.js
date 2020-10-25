@@ -1,7 +1,4 @@
-module.exports = {
-    name: "kick",
-    category: "",
-execute(message, args) {
+module.exports.run = async (message, args) => {
       if(!message.member.hasPermission("KICK_MEMBERS")) {
           message.channel.send("Too low permission!")
       }
@@ -25,4 +22,9 @@ execute(message, args) {
       message.reply("I don't want to kick \"\"");
     }
   }
-}
+
+
+module.exports.help = {
+  name: "kick",
+  category: "Moderate",
+};

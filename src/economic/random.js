@@ -1,9 +1,5 @@
 const db = require('quick.db')
-module.exports = {
-    name: 'guess',
-    aliases:  ['guessthenumber', 'gtn'],
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
         var bal = db.fetch(`bal_${member.id}_${message.guild.id}`)
         if(bal < 10) {
             message.channel.send("You need 10 Intelligence to play!")
@@ -37,6 +33,12 @@ module.exports = {
         } else if (result === '❌ Wrong') {
             db.subtract(`bal_${message.guild.id}_${user.id}`, lose)
         }
-    }
+    
 }
+};
+
+module.exports.help = {
+    name: 'stored',
+    aliases: ['str', 'keep'],
+    category: "Economic",
 };

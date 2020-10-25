@@ -1,9 +1,5 @@
 const db = require('quick.db')
-module.exports = {
-    name: 'bal',
-    aliases: ['checkbal', 'balance'],
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
         var member = message.mentions.members.first() || message.author;
 
         var bal = db.fetch(`bal_${member.id}_${message.guild.id}`)
@@ -19,4 +15,10 @@ module.exports = {
         .addField(`📁Stored Intelligence`, `${bank}`, true)
         message.channel.send(embed)
     }
-}
+
+
+module.exports.help = {
+    name: 'bal',
+    aliases: ['checkbal', 'balance'],
+    category: "Economic",
+};

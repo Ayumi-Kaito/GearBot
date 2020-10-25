@@ -1,9 +1,4 @@
-module.exports = {
-    name: "8ball",
-    aliases: ['8b'],
-    args: true,
-    category: "",
-    execute(message, args) {
+module.exports.run = async (message, args) => {
 
         function RANDOM() {
             let banswer = [
@@ -18,4 +13,11 @@ module.exports = {
         if(!args) return;
         message.channel.send(RANDOM())
     }
-}
+
+
+module.exports.help = {
+    name: "8ball",
+    aliases: ['8b'],
+    args: true,
+    category: "Fun",
+};

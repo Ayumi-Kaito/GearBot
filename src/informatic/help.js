@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const MusicClient = require('../../struct/Client');
 const client = new MusicClient
+const { readdirSync } = require('fs')
 
 module.exports.run = async (message, args) => {  
         const embed = new MessageEmbed()

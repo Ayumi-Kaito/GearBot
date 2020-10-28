@@ -8,7 +8,6 @@ const config = require('./config.json')
 const { sep } = require("path");
 const { success, error, warning } = require("log-symbols");
 
-
 client.config = config;
 
 fs.readdir("./events/", (err, files) => {
@@ -97,7 +96,7 @@ client.on('message', message => {
 	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
 	try {
-		command.execute(message, args);
+		command.run(message, args);
 	} catch (error) {
 		console.error(error);
 		message.reply('ERR!');

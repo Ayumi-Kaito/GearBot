@@ -104,4 +104,4 @@ client.on('message', message => {
 	}
 });
 
-client.login(client.config.token);
+client.login(process.env.TOKEN);

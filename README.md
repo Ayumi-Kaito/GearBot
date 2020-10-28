@@ -15,6 +15,7 @@
   <li>🎈FuN</li>
   <li>🎶Music</li>
   <li>💉Others</li>
+    <li>💵Economy</li>
   </ul>
   <br/>
     <br/>
@@ -51,6 +52,11 @@
     <li>say - Say what you say (args required) [MANAGE MESSAGE PERMISSIONS REQUIRED]</li>
   </ul>
   <br/>
+  <h2>Economy Commands</h2>
+  <li>Deposit [dep] - Deposit Inl</li>
+  <li>withdraw [with] - withdrw Inl</li>
+  <li>balance [bal] - Check Inl</li>
+  <li>random - Play a game (Guess the number 0-10)
     <br/>
   <h3>Bot is online 24/7</h3>
   </div>

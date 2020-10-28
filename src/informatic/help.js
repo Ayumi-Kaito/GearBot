@@ -6,7 +6,7 @@ const { readdirSync } = require('fs')
 module.exports.run = async (message, args) => {  
         const embed = new MessageEmbed()
             .setColor("GREEN")
-            .setTitle(`${client.username}`)
+            .setTitle(`${client.user.username}`)
             .setFooter(`A ${message.author.tag} Requested, at`, message.author.displayAvatarURL)
             .setTimestamp();
         if (args[0]) {

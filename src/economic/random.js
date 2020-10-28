@@ -38,7 +38,7 @@ module.exports.run = async (message, args) => {
 };
 
 module.exports.help = {
-    name: 'stored',
-    aliases: ['str', 'keep'],
+    name: 'random',
+    aliases: ['ran', 'r'],
     category: "Economic",
 };

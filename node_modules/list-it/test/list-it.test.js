@@ -82,6 +82,52 @@ describe("ListIt", () => {
                 ].join("\n")
             );
         });
+        describe("issue #37", ()=>{
+            describe("Including various number data", ()=>{
+                describe("At last column", ()=>{
+                    const listit = new ListIt({autoAlign: true});
+                    listit.d([
+                        [2.8e-7],
+                        [2.9e+45],
+                        [2.9],
+                        [2.25e-7],
+                    ]);
+                    const actual = listit.toString().split("\n").map(s => `|${s}|`);
+                    it("[0]", ()=>{ assert.equal(actual[0], "|2.80e-7 |"); });
+                    it("[1]", ()=>{ assert.equal(actual[1], "|2.90e+45|"); });
+                    it("[2]", ()=>{ assert.equal(actual[2], "|2.9     |"); });
+                    it("[3]", ()=>{ assert.equal(actual[3], "|2.25e-7 |"); });
+                });
+                describe("All number is positive", ()=>{
+                    const listit = new ListIt({autoAlign: true});
+                    listit.d([
+                        [2.8e-7, "$"],
+                        [2.9e+45, "$"],
+                        [2.9, "$"],
+                        [2.25e-7, "$"],
+                    ]);
+                    const actual = listit.toString().split("\n").map(s => `|${s}|`);
+                    it("[0]", ()=>{ assert.equal(actual[0], "|2.80e-7  $|"); });
+                    it("[1]", ()=>{ assert.equal(actual[1], "|2.90e+45 $|"); });
+                    it("[2]", ()=>{ assert.equal(actual[2], "|2.9      $|"); });
+                    it("[3]", ()=>{ assert.equal(actual[3], "|2.25e-7  $|"); });
+                });
+                describe("Including negative number", ()=>{
+                    const listit = new ListIt({autoAlign: true});
+                    listit.d([
+                        [2.8e-7, "$"],
+                        [-2.9e+45, "$"],
+                        [2.9, "$"],
+                        [2.25e-7, "$"],
+                    ]);
+                    const actual = listit.toString().split("\n").map(s => `|${s}|`);
+                    it("[0]", ()=>{ assert.equal(actual[0], "| 2.80e-7  $|"); });
+                    it("[1]", ()=>{ assert.equal(actual[1], "|-2.90e+45 $|"); });
+                    it("[2]", ()=>{ assert.equal(actual[2], "| 2.9      $|"); });
+                    it("[3]", ()=>{ assert.equal(actual[3], "| 2.25e-7  $|"); });
+                });
+            });
+        });
     });
     describe(".buffer", () => {
         it("should not set the autoAlign option", () => {

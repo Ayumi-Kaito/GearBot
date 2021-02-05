@@ -9,22 +9,19 @@
 - [Database#prepare()](#preparestring---statement) (see [`Statement`](#class-statement))
 - [Database#transaction()](#transactionfunction---function)
 - [Database#pragma()](#pragmastring-options---results)
-- [Database#checkpoint()](#checkpointdatabasename---this)
 - [Database#backup()](#backupdestination-options---promise)
 - [Database#function()](#functionname-options-function---this)
 - [Database#aggregate()](#aggregatename-options---this)
-- [Database#loadExtension()](#loadextensionpath---this)
+- [Database#loadExtension()](#loadextensionpath-entrypoint---this)
 - [Database#exec()](#execstring---this)
 - [Database#close()](#close---this)
 - [Properties](#properties)
 
 ### new Database(*path*, [*options*])
 
-Creates a new database connection. If the database file does not exist, it is created. This happens synchronously, which means you can start executing queries right away.
+Creates a new database connection. If the database file does not exist, it is created. This happens synchronously, which means you can start executing queries right away. You can create an [in-memory database](https://www.sqlite.org/inmemorydb.html) by passing `":memory:"` as the first argument.
 
 Various options are accepted:
-
-- `options.memory`: open an in-memory database, rather than a disk-bound one (default: `false`).
 
 - `options.readonly`: open the database connection in readonly mode (default: `false`).
 
@@ -85,6 +82,8 @@ insertMany.immediate(cats); // uses "BEGIN IMMEDIATE"
 insertMany.exclusive(cats); // uses "BEGIN EXCLUSIVE"
 ```
 
+Any arguments passed to the transaction function will be forwarded to the wrapped function, and any values returned from the wrapped function will be returned from the transaction function. The wrapped function will also have access to the same [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) binding as the transaction function.
+
 #### Caveats
 
 If you'd like to manage transactions manually, you're free to do so with regular [prepared statements](#preparestring---statement) (using `BEGIN`, `COMMIT`, etc.). However, manually managed transactions should not be mixed with transactions managed by this `.transaction()` method. In other words, using raw `COMMIT` or `ROLLBACK` statements inside a transaction function is not supported.
@@ -117,20 +116,6 @@ If execution of the PRAGMA fails, an `Error` is thrown.
 
 It's better to use this method instead of normal [prepared statements](#preparestring---statement) when executing PRAGMA, because this method normalizes some odd behavior that may otherwise be experienced. The documentation on SQLite3 PRAGMA can be found [here](https://www.sqlite.org/pragma.html).
 
-### .checkpoint([*databaseName*]) -> *this*
-
-Runs a [WAL mode checkpoint](https://www.sqlite.org/wal.html) on all attached databases (including the main database).
-
-Unlike [automatic checkpoints](https://www.sqlite.org/wal.html#automatic_checkpoint), this method executes a checkpoint in "RESTART" mode, which ensures a complete checkpoint operation even if other processes are using the database at the same time. You only need to use this method if you are accessing the database from multiple processes at the same time.
-
-```js
-setInterval(() => db.checkpoint(), 30000).unref();
-```
-
-If `databaseName` is provided, it should be the name of an attached database (or `"main"`). This causes only that database to be checkpointed.
-
-If the checkpoint fails, an `Error` is thrown.
-
 ### .backup(*destination*, [*options*]) -> *promise*
 
 Initiates a [backup](https://www.sqlite.org/backup.html) of the database, returning a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) for when the backup is complete. If the backup fails, the promise will be rejected with an `Error`. You can optionally backup an attached database by setting the `attached` option to the name of the desired attached database.
@@ -154,7 +139,7 @@ You can monitor the progress of the backup by setting the `progress` option to a
 
 By default, `100` [pages](https://www.sqlite.org/fileformat.html#pages) will be transferred after each cycle of the event loop. However, you can change this setting as often as you like by returning a number from the `progress` callback. You can even return `0` to effectively pause the backup altogether. In general, the goal is to maximize throughput while reducing pause times. If the transfer size is very low, pause times will be low, but it may take a while to complete the backup. On the flip side, if the setting is too high, pause times will be greater, but the backup might complete sooner. In most cases, `100` has proven to be a strong compromise, but the best setting is dependent on your computer's specifications and the nature of your program. Do not change this setting without measuring the effectiveness of your change. You should not assume that your change will even have the intended effect, unless you measure it for your unique situation.
 
-If the `progress` callback throws an exception, the backup will be aborted. Usually this happens due to an unexpected error, but you can also use this behavior to voluntarily cancel the backup operation. If the parent database connection is closed, all pending backups will be automatically aborted.
+If the backup is successful, the returned promise will contain an object that has the same properties as the one provided to the `progress` callback, but `.remainingPages` will be `0`. If the `progress` callback throws an exception, the backup will be aborted. Usually this happens due to an unexpected error, but you can also use this behavior to voluntarily cancel the backup operation. If the parent database connection is closed, all pending backups will be automatically aborted.
 
 ```js
 let paused = false;
@@ -244,7 +229,7 @@ db.prepare(`
 `).all();
 ```
 
-### .loadExtension(*path*) -> *this*
+### .loadExtension(*path*, [*entryPoint*]) -> *this*
 
 Loads a compiled [SQLite3 extension](https://sqlite.org/loadext.html) and applies it to the current database connection.
 

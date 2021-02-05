@@ -1,4 +1,5 @@
 'use strict';
+const wrappedMethods = new WeakSet();
 
 exports.getBooleanOption = (options, key) => {
 	let value = false;
@@ -13,5 +14,9 @@ exports.wrap = (Class, methodName, wrapper) => {
 	if (typeof originalMethod !== 'function') {
 		throw new TypeError(`Missing method ${methodName}`);
 	}
-	Class.prototype[methodName] = wrapper(originalMethod);
+	if (!wrappedMethods.has(originalMethod)) {
+		const wrapped = wrapper(originalMethod);
+		wrappedMethods.add(wrapped);
+		Class.prototype[methodName] = wrapped;
+	}
 };

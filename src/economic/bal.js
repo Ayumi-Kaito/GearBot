@@ -10,9 +10,9 @@ module.exports.run = async (message, args) => {
 
         const MessageEmbed = require('discord.js')
         var embed = new MessageEmbed()
-        .setTitle(`${member.username} Intelligence`)
-        .addField(`💡Intelligence`, `${bal}`, true)
-        .addField(`📁Stored Intelligence`, `${bank}`, true)
+        embed.setTitle(`${member.username} Intelligence`)
+        embed.addField(`💡Intelligence`, `${bal}`, true)
+        embed.addField(`📁Stored Intelligence`, `${bank}`, true)
         message.channel.send(embed)
     }
 

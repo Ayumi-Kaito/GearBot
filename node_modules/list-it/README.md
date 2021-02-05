@@ -165,6 +165,41 @@ NEPTUNE      102.0      49528        1638       11.0       23.5       16.1
 PLUTO          0.0146    2370        2095        0.7        1.3     -153.3
 ```
 
+#### Exponential notation
+
+__[sample/atoms.js](sample/atoms.js)__
+
+```javascript
+const ListIt = require("ist-it.js");
+const listit = new ListIt({
+    autoAlign : true,
+    headerUnderline: true,
+});
+const ATOMS = [
+    ["Name", "Radius(m)", "Radius(Å)"],
+    ["H", 0.1e-10, 0.1],
+    ["Cl", 1.67e-10, 1.67],
+    ["Na", 1.16e-10, 1.16],
+    ["O", 1.21e-10, 1.21],
+    ["Si", 0.4e-10, 0.4],
+];
+
+console.log(listit.setHeaderRow(ATOMS.shift()).d(ATOMS).toString());
+```
+
+outputs:
+
+```bash
+$ node sample/atoms.js
+Name Radius(m) Radius(Å)
+---- --------- ---------
+H     1.00e-11      0.1
+Cl    1.67e-10      1.67
+Na    1.16e-10      1.16
+O     1.21e-10      1.21
+Si    4.00e-11      0.4
+```
+
 #### Object Array
 
 

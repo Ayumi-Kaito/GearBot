@@ -1,15 +1,16 @@
 const { MessageEmbed } = require('discord.js')
 const MusicClient = require('../../struct/Client');
 const client = new MusicClient
-const { readdirSync } = require('fs')
+const { readdirSync } = require('fs');
+const prefix = require('../../config.json')
 
 module.exports.run = async (message, args) => {  
         const embed = new MessageEmbed()
             .setColor("GREEN")
-            .setTitle(`${client.username}`)
+            .setTitle("ChanonBot")
             .setFooter(`A ${message.author.tag} Requested, at`, message.author.displayAvatarURL)
             .setTimestamp();
-        if (args[0]) {
+        if (!args[0]) {
             let command = args[0];
             let cmd;
             if (client.commands.has(command)) {
@@ -18,7 +19,7 @@ module.exports.run = async (message, args) => {
             else if (client.aliases.has(command)) {
                 cmd = client.commands.get(client.aliases.get(command));
             }
-            if(!cmd) return message.channel.send(embed.setTitle("Invalid Command.").setDescription(`Do \`${client.config.prefix}help\` for the list of the commands.`));
+            if(!cmd) return message.channel.send(embed.setTitle("Invalid Command.").setDescription(`Do \`${prefix}help\` for the list of the commands.`));
             command = cmd.help;
             embed.setTitle(`${command.name.slice(0, 1).toUpperCase() + command.name.slice(1)} command help`);
             embed.setDescription([
@@ -33,8 +34,8 @@ module.exports.run = async (message, args) => {
         }
         const categories = readdirSync("./src/");
         embed.setDescription([
-            `Available commands for ${client.user.username}.`,
-            `The bot prefix is **${client.config.prefix}**`,
+            `Available commands for ${client.username}.`,
+            `The bot prefix is **c.**`,
         ].join("\n"));
         categories.forEach(category => {
             const dir = client.commands.filter(c => c.help.category.toLowerCase() === category.toLowerCase());
@@ -49,7 +50,6 @@ module.exports.run = async (message, args) => {
                 console.log(e);
             }
         });
-        return message.channel.send(embed);
     };
     
 

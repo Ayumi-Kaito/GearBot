@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const MusicClient = require('../../struct/Client');
-const client = new MusicClient
+const client = require('discord.js')
 const { readdirSync } = require('fs');
 const prefix = require('../../config.json')
 
